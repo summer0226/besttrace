@@ -23,18 +23,18 @@ xitongjiance() {
     if [[ "${ID}" == "centos" && ${VERSION_ID} -ge 7 ]]; then
         echo -e "${OK} ${GreenBG} 当前系统为 Centos ${VERSION_ID} ${VERSION} ${Font}"
         INS="yum"
-		$INS update
-		$INS install wget zip -y
+	$INS update
+	$INS install wget zip -y
     elif [[ "${ID}" == "debian" && ${VERSION_ID} -ge 8 ]]; then
         echo -e "${OK} ${GreenBG} 当前系统为 Debian ${VERSION_ID} ${VERSION} ${Font}"
         INS="apt"
         $INS update
-		$INS install wget zip -y
+	$INS install wget zip -y
     elif [[ "${ID}" == "ubuntu" && $(echo "${VERSION_ID}" | cut -d '.' -f1) -ge 16 ]]; then
         echo -e "${OK} ${GreenBG} 当前系统为 Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME} ${Font}"
         INS="apt"
         $INS update
-		$INS install wget zip -y
+	$INS install wget zip -y
     else
         echo -e "${Error} ${RedBG} 当前系统为 ${ID} ${VERSION_ID} 不在支持的系统列表内，安装中断 ${Font}"
         exit 1
@@ -52,6 +52,7 @@ root() {
 }
 
 xiazai(){
+    wget https://cdn.ipip.net/17mon/besttrace4linux.zip
     unzip besttrace4linux.zip
     chmod +x besttrace
     echo -e "${OK} ${GreenBG} 安装完成 ${Font}"
@@ -59,8 +60,8 @@ xiazai(){
 
 anzhuang(){
     root
-	xitongjiance
-	xiazai
+    xitongjiance
+    xiazai
 }
 menu(){
     echo -e "\t———————TCP 路由追踪脚本———————"
@@ -76,16 +77,16 @@ menu(){
        anzhuang
        ;;
     2)
-	   read -rp "请输入IP地址" ip
-	   ./besttrace -q1 -g cn -T ${ip}
-	   ;;
-	3)
+       read -rp "请输入IP地址" ip
+       ./besttrace -q1 -g cn -T ${ip}
+       ;;
+     3)
        exit 0
        ;;
-	*)
-	   echo -e "${RedBG}请输入正确的数字${Font}"
-	   ;;
-	   esac
+     *)
+       echo -e "${RedBG}请输入正确的数字${Font}"
+	;;
+    esac
 }
 
 menu
