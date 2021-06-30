@@ -52,7 +52,7 @@ root() {
 }
 
 xiazai(){
-    wget https://cdn.ipip.net/17mon/besttrace4linux.zip
+    wget https://raw.githubusercontent.com/summer0226/BestTrace/master/besttrace4linux.zip
     unzip besttrace4linux.zip
     chmod +x besttrace
     echo -e "${OK} ${GreenBG} 安装完成 ${Font}"
